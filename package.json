@@ -22,7 +22,10 @@
       {
         "command": "json-dynamic-widget-helper.showMenu",
         "key": "cmd+.",
-        "when": "editorLangId == json"
+        "when": "editorLangId == json",
+        "mac": "cmd+.",
+        "linux": "ctrl+.",
+        "win": "ctrl+."
       }
     ],
     "menus": {

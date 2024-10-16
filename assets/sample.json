@@ -1,0 +1,42 @@
+{
+  "type": "scaffold",
+  "args": {
+    "appBar": {
+      "type": "app_bar",
+      "args": {
+        "title": {
+          "type": "text",
+          "args": {
+            "text": "Sample Json View"
+          }
+        }
+      }
+    },
+    "body": {
+      "type": "column",
+      "args": {
+        "mainAxisAlignment": "center",
+        "crossAxisAlignment": "center",
+        "children": [
+          {
+            "type": "text",
+            "args": {
+              "text": "Cool right?"
+            }
+          },
+          {
+            "type": "elevated_button",
+            "args": {
+              "child": {
+                "type": "text",
+                "args": {
+                  "text": "Click me!"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

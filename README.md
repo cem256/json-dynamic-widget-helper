@@ -1,71 +1,26 @@
-# json-dynamic-widget-helper README
+# JSON Dynamic Widget Helper (WIP)
 
-This is the README for your extension "json-dynamic-widget-helper". After writing up a brief description, we recommend including the following sections.
+## Overview
+
+JSON Dynamic Widget Helper is a Visual Studio Code extension designed to assist developers working with the `json_dynamic_widget` package for Flutter. This extension is currently in its early stages of development and is a work in progress (WIP).
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+This extension provides tools to manipulate JSON structures used with the `json_dynamic_widget` package, making it easier to:
 
-For example if there is an image subfolder under your extension project workspace:
+- Wrap existing widgets with new parent widgets (e.g., Column, Row, or custom widgets)
+- Remove child widgets
 
-\!\[feature X\]\(images/feature-x.png\)
+## Status
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+⚠️ **Early Development Stage** ⚠️
 
-## Requirements
+This extension is in its initial development phase. Features may be incomplete or subject to significant changes.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## Usage
 
-## Extension Settings
+(Brief instructions on how to use the extension will be added as features are stabilized)
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+## Contributing
 
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Contributions are welcome! If you'd like to contribute to this project, please feel free to submit pull requests or open issues on the GitHub repository.

@@ -29,13 +29,7 @@
       }
     ],
     "menus": {
-      "editor/context": [
-        {
-          "command": "json-dynamic-widget-helper.showMenu",
-          "when": "resourceLangId == json",
-          "group": "modification"
-        }
-      ]
+      "editor/context": []
     }
   },
   "scripts": {

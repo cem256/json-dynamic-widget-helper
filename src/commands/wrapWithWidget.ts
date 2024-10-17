@@ -8,12 +8,23 @@ export function wrapWithWidget(editor: vscode.TextEditor, wrapperType: string) {
   const jsonObject = findJsonObjectAtSelection(document, selection);
 
   if (jsonObject) {
-    const wrappedObject = {
-      type: wrapperType,
-      args: {
-        child: jsonObject.object
-      }
-    };
+    let wrappedObject;
+
+    if (wrapperType === 'row' || wrapperType === 'column') {
+      wrappedObject = {
+        type: wrapperType,
+        args: {
+          children: [jsonObject.object]
+        }
+      };
+    } else {
+      wrappedObject = {
+        type: wrapperType,
+        args: {
+          child: jsonObject.object
+        }
+      };
+    }
 
     editor.edit(editBuilder => {
       const range = new vscode.Range(jsonObject.start, jsonObject.end);

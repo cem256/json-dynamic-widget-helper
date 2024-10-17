@@ -1,31 +1,52 @@
-# JSON Dynamic Widget Helper (WIP)
+# JSON Dynamic Widget Helper
 
 ## Overview
 
-JSON Dynamic Widget Helper is a Visual Studio Code extension designed to assist developers working with the [`json_dynamic_widget`](https://pub.dev/packages/json_dynamic_widget) package for Flutter. This extension is currently in its early stages of development and is a work in progress (WIP).
+JSON Dynamic Widget Helper is a Visual Studio Code extension designed to assist developers working with the [`json_dynamic_widget`](https://pub.dev/packages/json_dynamic_widget) package for Flutter. This extension provides tools to manipulate JSON structures, making it easier to work with dynamic widgets in your Flutter projects.
 
 ## Features
 
-This extension provides tools to manipulate JSON structures used with the [`json_dynamic_widget`](https://pub.dev/packages/json_dynamic_widget) package, making it easier to:
+- Wrap existing widgets with new parent widgets (e.g., Column, Row, Container, or custom widgets)
+- Remove selected widgets from the widget tree
+- Quick and easy manipulation of JSON structures for [`json_dynamic_widget`](https://pub.dev/packages/json_dynamic_widget)
 
-- Wrap existing widgets with new parent widgets (e.g., Column, Row, or custom widgets)
-- Remove selected widget from from the tree
+## Demo
 
-## Status
+![JSON Dynamic Widget Helper Demo](https://raw.githubusercontent.com/cem256/json-dynamic-widget-helper/master/assets/gif/usage.gif)
 
-⚠️ **Early Development Stage** ⚠️
+## Installation
 
-This extension is in its initial development phase. Features may be incomplete or subject to significant changes.
+1. Open Visual Studio Code
+2. Go to the Extensions view (Ctrl+Shift+X or Cmd+Shift+X)
+3. Search for "JSON Dynamic Widget Helper"
+4. Click Install
 
 ## Usage
 
-To trigger the extension:
+1. Open a JSON file containing `json_dynamic_widget` structures in VS Code.
+2. Place your cursor on the "type" key of the widget you want to modify.
+3. Press `Cmd + .` (Mac) or `Ctrl + .` (Windows/Linux) to open the code actions menu.
+4. Choose from the available options:
+   - Wrap with Column
+   - Wrap with Row
+   - Wrap with Container
+   - Wrap with Center
+   - Wrap with custom widget...
+   - Remove this widget
 
-1. Open a JSON file in VS Code.
-2. Select the "type" key of a widget you want to modify.
-3. Press `Cmd + .` (Mac) or `Ctrl + .` (Windows/Linux)
-4. A menu will appear with options to wrap or remove the selected widget
+### Wrapping a Widget
 
+1. Select the "type" key of the widget you want to wrap.
+2. Open the code actions menu.
+3. Choose "Wrap with..." and select the desired wrapper widget.
+4. The extension will automatically wrap your selected widget with the chosen parent widget.
+
+### Removing a Widget
+
+1. Select the "type" key of the widget you want to remove.
+2. Open the code actions menu.
+3. Choose "Remove this widget".
+4. The extension will remove the selected widget from the JSON structure.
 
 ## Contributing
 

@@ -9,29 +9,10 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onLanguage:json"
+  ],
   "main": "./out/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "json-dynamic-widget-helper.showMenu",
-        "title": "Show Widget Actions Menu"
-      }
-    ],
-    "keybindings": [
-      {
-        "command": "json-dynamic-widget-helper.showMenu",
-        "key": "cmd+.",
-        "when": "editorLangId == json",
-        "mac": "cmd+.",
-        "linux": "ctrl+.",
-        "win": "ctrl+."
-      }
-    ],
-    "menus": {
-      "editor/context": []
-    }
-  },
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",

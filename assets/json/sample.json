@@ -19,9 +19,16 @@
         "crossAxisAlignment": "center",
         "children": [
           {
-            "type": "text",
+            "type": "row",
             "args": {
-              "text": "Cool right?"
+              "children": [
+                {
+                  "type": "text",
+                  "args": {
+                    "text": "Cool right?"
+                  }
+                }
+              ]
             }
           },
           {

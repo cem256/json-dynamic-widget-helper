@@ -1,45 +1,50 @@
 import * as vscode from 'vscode';
-import { showErrorMessage } from './utils';
+import { showErrorMessage } from './ui-utils';
 
 export function findJsonObjectAtSelection(document: vscode.TextDocument, selection: vscode.Selection) {
-  const startPosition = selection.start;
-  const endPosition = selection.end;
-
-  const selectedText = document.getText(new vscode.Range(startPosition, endPosition)).trim();
-
-  if (selectedText !== 'type') {
-    showErrorMessage('Error: Selection must be the word "type" without quotation marks.');
+  if (!isValidSelection(document, selection)) {
     return null;
   }
 
-  const lineText = document.lineAt(startPosition.line).text;
-  const colonIndex = lineText.indexOf(':', startPosition.character);
-
-  if (colonIndex === -1) {
-    showErrorMessage('Error: Could not find the value for "type".');
-    return null;
-  }
-
-  const openingBracePosition = findOpeningBraceForParentObject(document, startPosition);
-
+  const openingBracePosition = findOpeningBraceForParentObject(document, selection.start);
   if (!openingBracePosition) {
     showErrorMessage('Error: Could not find the opening brace for the JSON object.');
     return null;
   }
 
   const closingBracePosition = findClosingBrace(document, openingBracePosition);
-
   if (!closingBracePosition) {
     showErrorMessage('Error: Could not find the closing brace for the JSON object.');
     return null;
   }
 
-  const jsonRange = new vscode.Range(openingBracePosition, closingBracePosition);
+  return parseJsonObject(document, openingBracePosition, closingBracePosition);
+}
+
+function isValidSelection(document: vscode.TextDocument, selection: vscode.Selection): boolean {
+  const selectedText = document.getText(new vscode.Range(selection.start, selection.end)).trim();
+  if (selectedText !== 'type') {
+    showErrorMessage('Error: Selection must be the word "type" without quotation marks.');
+    return false;
+  }
+
+  const lineText = document.lineAt(selection.start.line).text;
+  const colonIndex = lineText.indexOf(':', selection.start.character);
+  if (colonIndex === -1) {
+    showErrorMessage('Error: Could not find the value for "type".');
+    return false;
+  }
+
+  return true;
+}
+
+function parseJsonObject(document: vscode.TextDocument, start: vscode.Position, end: vscode.Position) {
+  const jsonRange = new vscode.Range(start, end);
   const jsonText = document.getText(jsonRange);
 
   try {
     const parsedObject = JSON.parse(jsonText);
-    return { object: parsedObject, start: openingBracePosition, end: closingBracePosition };
+    return { object: parsedObject, start, end };
   } catch (e) {
     showErrorMessage('Error: Invalid JSON object.');
     return null;

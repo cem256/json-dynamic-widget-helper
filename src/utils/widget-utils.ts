@@ -1,14 +1,15 @@
 export function createWrappedObject(wrapperType: string, childObject: any) {
-  if (wrapperType === 'row' || wrapperType === 'column') {
+  const lowercaseType = wrapperType.toLowerCase();
+  if (lowercaseType === 'row' || lowercaseType === 'column') {
     return {
-      type: wrapperType,
+      type: lowercaseType,
       args: {
         children: [childObject]
       }
     };
   } else {
     return {
-      type: wrapperType,
+      type: lowercaseType,
       args: {
         child: childObject
       }

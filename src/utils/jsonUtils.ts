@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import { showErrorMessage } from './uiUtils';
 
 export function findJsonObjectAtSelection(document: vscode.TextDocument, selection: vscode.Selection) {
   const startPosition = selection.start;
@@ -7,7 +8,7 @@ export function findJsonObjectAtSelection(document: vscode.TextDocument, selecti
   const selectedText = document.getText(new vscode.Range(startPosition, endPosition)).trim();
 
   if (selectedText !== 'type') {
-    vscode.window.showErrorMessage('Error: Selection must be the word "type" without quotation marks.');
+    showErrorMessage('Error: Selection must be the word "type" without quotation marks.');
     return null;
   }
 
@@ -15,21 +16,21 @@ export function findJsonObjectAtSelection(document: vscode.TextDocument, selecti
   const colonIndex = lineText.indexOf(':', startPosition.character);
 
   if (colonIndex === -1) {
-    vscode.window.showErrorMessage('Error: Could not find the value for "type".');
+    showErrorMessage('Error: Could not find the value for "type".');
     return null;
   }
 
   const openingBracePosition = findOpeningBraceForParentObject(document, startPosition);
 
   if (!openingBracePosition) {
-    vscode.window.showErrorMessage('Error: Could not find the opening brace for the JSON object.');
+    showErrorMessage('Error: Could not find the opening brace for the JSON object.');
     return null;
   }
 
   const closingBracePosition = findClosingBrace(document, openingBracePosition);
 
   if (!closingBracePosition) {
-    vscode.window.showErrorMessage('Error: Could not find the closing brace for the JSON object.');
+    showErrorMessage('Error: Could not find the closing brace for the JSON object.');
     return null;
   }
 
@@ -40,7 +41,7 @@ export function findJsonObjectAtSelection(document: vscode.TextDocument, selecti
     const parsedObject = JSON.parse(jsonText);
     return { object: parsedObject, start: openingBracePosition, end: closingBracePosition };
   } catch (e) {
-    vscode.window.showErrorMessage('Error: Invalid JSON object.');
+    showErrorMessage('Error: Invalid JSON object.');
     return null;
   }
 }

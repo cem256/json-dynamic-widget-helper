@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import { wrapWithWidget } from './wrapWithWidget';
 import { removeWidget } from './removeWidget';
 import { findJsonObjectAtSelection } from '../utils/jsonUtils';
+import { showErrorMessage } from '../utils/uiUtils';
 
 const WRAP_OPTIONS = ['Wrap with Column', 'Wrap with Row', 'Wrap with widget...'];
 const REMOVE_OPTION = 'Remove this widget';
@@ -14,13 +15,13 @@ export async function showMenu() {
   const selectedText = editor.document.getText(selection).trim();
 
   if (selectedText !== 'type') {
-    vscode.window.showErrorMessage('Error: You must select the "type" key (without quotation marks).');
+    showErrorMessage('Error: You must select the "type" key (without quotation marks).');
     return;
   }
 
   const jsonObject = findJsonObjectAtSelection(editor.document, selection);
   if (!jsonObject) {
-    vscode.window.showErrorMessage('Error: Unable to find a valid JSON object.');
+    showErrorMessage('Error: Unable to find a valid JSON object.');
     return;
   }
 
@@ -66,6 +67,6 @@ async function handleCustomWrap(editor: vscode.TextEditor) {
   if (widgetType) {
     wrapWithWidget(editor, widgetType);
   } else {
-    vscode.window.showErrorMessage('Error: You must enter a widget name.');
+    showErrorMessage('Error: You must enter a widget name.');
   }
 }

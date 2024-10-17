@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import { findJsonObjectAtSelection } from '../utils/jsonUtils';
 import { createWrappedObject } from '../utils/widgetUtils';
+import { showErrorMessage } from '../utils/uiUtils';
 
 export function wrapWithWidget(editor: vscode.TextEditor, wrapperType: string) {
   const document = editor.document;
@@ -9,7 +10,7 @@ export function wrapWithWidget(editor: vscode.TextEditor, wrapperType: string) {
   const jsonObject = findJsonObjectAtSelection(document, selection);
 
   if (!jsonObject) {
-    vscode.window.showErrorMessage("Error: Unable to find a valid JSON object.");
+    showErrorMessage("Error: Unable to find a valid JSON object.");
     return;
   }
 

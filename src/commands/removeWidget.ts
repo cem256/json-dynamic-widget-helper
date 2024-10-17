@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import { findJsonObjectAtSelection } from '../utils/jsonUtils';
+import { hasOneChild, getChildContent } from '../utils/widgetUtils';
 
 export function removeWidget(editor: vscode.TextEditor) {
   const document = editor.document;
@@ -7,29 +8,20 @@ export function removeWidget(editor: vscode.TextEditor) {
 
   const jsonObject = findJsonObjectAtSelection(document, selection);
 
-  if (jsonObject) {
-    editor.edit(editBuilder => {
-      const range = new vscode.Range(jsonObject.start, jsonObject.end);
-      
-      // Check if the widget has exactly one child
-      const hasOneChild = jsonObject.object.args && 
-        ((jsonObject.object.args.child && Object.keys(jsonObject.object.args).length === 1) ||
-         (Array.isArray(jsonObject.object.args.children) && jsonObject.object.args.children.length === 1));
-
-      if (hasOneChild) {
-        // If it has exactly one child, replace the widget with its child
-        const childContent = JSON.stringify(
-          jsonObject.object.args.child || jsonObject.object.args.children[0],
-          null,
-          2
-        );
-        editBuilder.replace(range, childContent);
-      } else {
-        // If there's no child or multiple children, remove the widget
-        editBuilder.delete(range);
-      }
-    });
-  } else {
+  if (!jsonObject) {
     vscode.window.showErrorMessage("Error: Unable to find a valid JSON object.");
+    return;
   }
+
+  editor.edit(editBuilder => {
+    const range = new vscode.Range(jsonObject.start, jsonObject.end);
+    
+    if (hasOneChild(jsonObject.object)) {
+      // If it has exactly one child, replace the widget with its child
+      editBuilder.replace(range, getChildContent(jsonObject.object));
+    } else {
+      // If there's no child or multiple children, remove the widget
+      editBuilder.delete(range);
+    }
+  });
 }

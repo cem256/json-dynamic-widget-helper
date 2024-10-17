@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import { findJsonObjectAtSelection } from '../utils/jsonUtils';
 
-export function removeChild(editor: vscode.TextEditor) {
+export function removeWidget(editor: vscode.TextEditor) {
   const document = editor.document;
   const selection = editor.selection;
 

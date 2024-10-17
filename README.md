@@ -9,7 +9,7 @@ JSON Dynamic Widget Helper is a Visual Studio Code extension designed to assist 
 This extension provides tools to manipulate JSON structures used with the [`json_dynamic_widget`](https://pub.dev/packages/json_dynamic_widget) package, making it easier to:
 
 - Wrap existing widgets with new parent widgets (e.g., Column, Row, or custom widgets)
-- Remove child widgets
+- Remove selected widget from from the tree
 
 ## Status
 
@@ -23,12 +23,9 @@ To trigger the extension:
 
 1. Open a JSON file in VS Code.
 2. Select the "type" key of a widget you want to modify.
-3. Use one of the following methods to activate the extension:
-   - Press `Cmd + .` (Mac) or `Ctrl + .` (Windows/Linux)
-   - Right-click and select "Show Widget Actions Menu" from the context menu
-   - From the menu select the action you want to perform and viola!
+3. Press `Cmd + .` (Mac) or `Ctrl + .` (Windows/Linux)
+4. A menu will appear with options to wrap or remove the selected widget
 
-A menu will appear with options to wrap or remove the selected widget.
 
 ## Contributing
 

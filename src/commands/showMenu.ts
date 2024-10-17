@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { wrapWithWidget } from './wrapWithWidget';
-import { removeChild } from './removeChild';
+import { removeWidget } from './removeWidget';
 
 export async function showMenu() {
   const editor = vscode.window.activeTextEditor;
@@ -44,7 +44,7 @@ export async function showMenu() {
       }
       break;
     case 'Remove this widget':
-      removeChild(editor);
+      removeWidget(editor);
       break;
   }
 }

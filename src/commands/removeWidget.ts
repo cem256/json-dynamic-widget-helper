@@ -10,11 +10,23 @@ export function removeWidget(editor: vscode.TextEditor) {
   if (jsonObject) {
     editor.edit(editBuilder => {
       const range = new vscode.Range(jsonObject.start, jsonObject.end);
-      if (jsonObject.object.args && jsonObject.object.args.child) {
-        const childContent = JSON.stringify(jsonObject.object.args.child, null, 2);
+      
+      // Check if the widget has exactly one child
+      const hasOneChild = jsonObject.object.args && 
+        ((jsonObject.object.args.child && Object.keys(jsonObject.object.args).length === 1) ||
+         (Array.isArray(jsonObject.object.args.children) && jsonObject.object.args.children.length === 1));
+
+      if (hasOneChild) {
+        // If it has exactly one child, replace the widget with its child
+        const childContent = JSON.stringify(
+          jsonObject.object.args.child || jsonObject.object.args.children[0],
+          null,
+          2
+        );
         editBuilder.replace(range, childContent);
       } else {
-        editBuilder.replace(range, '');
+        // If there's no child or multiple children, remove the widget
+        editBuilder.delete(range);
       }
     });
   } else {

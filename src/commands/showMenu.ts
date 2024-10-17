@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import { wrapWithWidget } from './wrapWithWidget';
 import { removeWidget } from './removeWidget';
+import { findJsonObjectAtSelection } from '../utils/jsonUtils';
 
 export async function showMenu() {
   const editor = vscode.window.activeTextEditor;
@@ -17,7 +18,25 @@ export async function showMenu() {
     return;
   }
 
-  const options = ['Wrap with widget...', 'Wrap with Column', 'Wrap with Row', 'Remove this widget'];
+  const jsonObject = findJsonObjectAtSelection(editor.document, selection);
+
+  if (!jsonObject) {
+    vscode.window.showErrorMessage('Error: Unable to find a valid JSON object.');
+    return;
+  }
+
+  const options = ['Wrap with widget...', 'Wrap with Column', 'Wrap with Row'];
+
+  // Check if the widget has multiple children
+  const hasMultipleChildren = jsonObject.object.args && 
+    Array.isArray(jsonObject.object.args.children) && 
+    jsonObject.object.args.children.length > 1;
+
+  // Add 'Remove this widget' option only if it doesn't have multiple children
+  if (!hasMultipleChildren) {
+    options.push('Remove this widget');
+  }
+
   const selectedAction = await vscode.window.showQuickPick(options, {
     placeHolder: 'Select an action to perform on the selected widget'
   });

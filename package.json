@@ -1,14 +1,26 @@
 {
   "name": "json-dynamic-widget-helper",
-  "displayName": "json-dynamic-widget-helper",
-  "description": "",
+  "displayName": "JSON Dynamic Widget Helper",
+  "description": "Quick and easy manipulation of JSON structures for `json_dynamic_widget`",
   "version": "0.0.1",
+  "publisher": "cem256",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cem256/json-dynamic-widget-helper"
+  },
+  "categories": [
+    "Snippets",
+    "Programming Languages"
+  ],
+  "keywords": [
+    "dart",
+    "flutter",
+    "json_dynamic_widget",
+    "json_dynamic_widget helper"
+  ],
   "engines": {
     "vscode": "^1.94.0"
   },
-  "categories": [
-    "Other"
-  ],
   "activationEvents": [
     "onLanguage:json"
   ],

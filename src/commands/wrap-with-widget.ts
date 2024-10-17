@@ -1,7 +1,5 @@
 import * as vscode from 'vscode';
-import { findJsonObjectAtSelection } from '../utils/jsonUtils';
-import { createWrappedObject } from '../utils/widgetUtils';
-import { showErrorMessage } from '../utils/uiUtils';
+import { createWrappedObject, showErrorMessage, findJsonObjectAtSelection } from '../utils/utils';
 
 export function wrapWithWidget(editor: vscode.TextEditor, wrapperType: string) {
   const document = editor.document;

@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { showErrorMessage } from './uiUtils';
+import { showErrorMessage } from './utils';
 
 export function findJsonObjectAtSelection(document: vscode.TextDocument, selection: vscode.Selection) {
   const startPosition = selection.start;

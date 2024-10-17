@@ -1,6 +1,5 @@
 import * as vscode from 'vscode';
-import { wrapWithWidget } from './wrapWithWidget';
-import { removeWidget } from './removeWidget';
+import { removeWidget, wrapWithWidget } from './commands';
 
 export function registerCommands(context: vscode.ExtensionContext) {
 

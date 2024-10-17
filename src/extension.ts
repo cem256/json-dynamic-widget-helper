@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
-import { registerCommands } from './commands/registerCommands';
-import { JsonWidgetCodeActionProvider } from './providers/JsonWidgetCodeActionProvider';
+import { registerCommands } from './commands/commands';
+import { JsonWidgetCodeActionProvider } from './providers/providers';
 
 export function activate(context: vscode.ExtensionContext) {
   registerCommands(context);

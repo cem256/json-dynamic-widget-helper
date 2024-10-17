@@ -1,7 +1,5 @@
 import * as vscode from 'vscode';
-import { findJsonObjectAtSelection } from '../utils/jsonUtils';
-import { hasOneChild, getChildContent } from '../utils/widgetUtils';
-import { showErrorMessage } from '../utils/uiUtils';
+import { hasOneChild, getChildContent, showErrorMessage, findJsonObjectAtSelection } from '../utils/utils';
 
 export function removeWidget(editor: vscode.TextEditor) {
   const document = editor.document;

@@ -2,7 +2,7 @@
   "name": "json-dynamic-widget-helper",
   "displayName": "JSON Dynamic Widget Helper",
   "description": "Quick and easy manipulation of JSON structures for `json_dynamic_widget`",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "cem256",
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
     "json_dynamic_widget helper"
   ],
   "engines": {
-    "vscode": "^1.94.0"
+    "vscode": "^1.93.0"
   },
   "activationEvents": [
     "onLanguage:json"
@@ -34,14 +34,14 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.94.0",
     "@types/mocha": "^10.0.8",
     "@types/node": "20.x",
+    "@types/vscode": "^1.93.0",
     "@typescript-eslint/eslint-plugin": "^8.7.0",
     "@typescript-eslint/parser": "^8.7.0",
-    "eslint": "^9.11.1",
-    "typescript": "^5.6.2",
     "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.4.1"
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.11.1",
+    "typescript": "^5.6.2"
   }
 }

@@ -66,7 +66,5 @@ async function handleCustomWrap(editor: vscode.TextEditor) {
   });
   if (widgetType) {
     wrapWithWidget(editor, widgetType);
-  } else {
-    showErrorMessage('Error: You must enter a widget name.');
   }
 }

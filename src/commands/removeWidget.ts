@@ -10,7 +10,12 @@ export function removeWidget(editor: vscode.TextEditor) {
   if (jsonObject) {
     editor.edit(editBuilder => {
       const range = new vscode.Range(jsonObject.start, jsonObject.end);
-      editBuilder.replace(range, '');
+      if (jsonObject.object.args && jsonObject.object.args.child) {
+        const childContent = JSON.stringify(jsonObject.object.args.child, null, 2);
+        editBuilder.replace(range, childContent);
+      } else {
+        editBuilder.replace(range, '');
+      }
     });
   } else {
     vscode.window.showErrorMessage("Error: Unable to find a valid JSON object.");

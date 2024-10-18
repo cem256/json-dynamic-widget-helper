@@ -8,7 +8,12 @@ export class JsonWidgetCodeActionProvider implements vscode.CodeActionProvider {
     vscode.CodeActionKind.Refactor
   ];
 
-  public provideCodeActions(): vscode.CodeAction[] {
+  public provideCodeActions(document: vscode.TextDocument, range: vscode.Range | vscode.Selection): vscode.CodeAction[] {
+    const selectedText = document.getText(range);
+    if (selectedText.trim() !== 'type') {
+      return [];
+    }
+
     const actions: vscode.CodeAction[] = [];
 
     // Add custom wrap action

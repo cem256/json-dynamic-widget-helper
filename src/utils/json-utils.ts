@@ -2,10 +2,6 @@ import * as vscode from 'vscode';
 import { showErrorMessage } from './ui-utils';
 
 export function findJsonObjectAtSelection(document: vscode.TextDocument, selection: vscode.Selection) {
-  if (!isValidSelection(document, selection)) {
-    return null;
-  }
-
   const openingBracePosition = findOpeningBraceForParentObject(document, selection.start);
   if (!openingBracePosition) {
     showErrorMessage('Error: Could not find the opening brace for the JSON object.');
@@ -21,10 +17,9 @@ export function findJsonObjectAtSelection(document: vscode.TextDocument, selecti
   return parseJsonObject(document, openingBracePosition, closingBracePosition);
 }
 
-function isValidSelection(document: vscode.TextDocument, selection: vscode.Selection): boolean {
+export function isValidSelection(document: vscode.TextDocument, selection: vscode.Selection): boolean {
   const selectedText = document.getText(new vscode.Range(selection.start, selection.end)).trim();
   if (selectedText !== 'type') {
-    showErrorMessage('Error: Selection must be the word "type" without quotation marks.');
     return false;
   }
 

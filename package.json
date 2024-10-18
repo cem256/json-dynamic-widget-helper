@@ -2,7 +2,7 @@
   "name": "json-dynamic-widget-helper",
   "displayName": "JSON Dynamic Widget Helper",
   "description": "Provides tools to manipulate JSON for `json_dynamic_widget` package",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publisher": "cem256",
   "repository": {
     "type": "git",

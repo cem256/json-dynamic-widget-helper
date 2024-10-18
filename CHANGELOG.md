@@ -1,5 +1,7 @@
 # Change Log
 
+# v0.0.4
+- Updated extension logo
 
 # v0.0.3
 - Added logo to the extension

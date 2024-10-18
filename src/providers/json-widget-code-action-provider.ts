@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import { findJsonObjectAtSelection, hasOneOrNoChild } from '../utils/utils';
 
 const WRAP_WIDGET_TYPES = ['Center','Container', 'Column', 'Row'];
 const COMMAND_PREFIX = 'json-dynamic-widget-helper';
@@ -22,8 +23,11 @@ export class JsonWidgetCodeActionProvider implements vscode.CodeActionProvider {
     // Add wrap actions
     actions.push(...this.createWrapActions());
 
-    // Add remove action
-    actions.push(this.createRemoveAction());
+    // Add remove action only if the widget has exactly one child or no child
+    const jsonObject = findJsonObjectAtSelection(document, new vscode.Selection(range.start, range.end));
+    if (jsonObject && hasOneOrNoChild(jsonObject.object)) {
+      actions.push(this.createRemoveAction());
+    }
 
     return actions;
   }

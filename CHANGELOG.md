@@ -1,5 +1,10 @@
 # Change Log
 
+
+# v0.0.3
+- Added logo to the extension
+- Updated README.md
+
 # v0.0.2
 - Reduced VSCode engine version requirement to 1.93.0
 

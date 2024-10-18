@@ -4,22 +4,15 @@
 
 JSON Dynamic Widget Helper is a Visual Studio Code extension designed to assist developers working with the [`json_dynamic_widget`](https://pub.dev/packages/json_dynamic_widget) package for Flutter. This extension provides tools to manipulate JSON structures, making it easier to work with dynamic widgets in your Flutter projects.
 
+## Demo
+
+![JSON Dynamic Widget Helper Demo](https://raw.githubusercontent.com/cem256/json-dynamic-widget-helper/master/assets/gif/usage.gif)
+
 ## Features
 
 - Wrap existing widgets with new parent widgets (e.g., Column, Row, Container, or custom widgets)
 - Remove selected widgets from the widget tree
 - Quick and easy manipulation of JSON structures for [`json_dynamic_widget`](https://pub.dev/packages/json_dynamic_widget)
-
-## Demo
-
-![JSON Dynamic Widget Helper Demo](https://raw.githubusercontent.com/cem256/json-dynamic-widget-helper/master/assets/gif/usage.gif)
-
-## Installation
-
-1. Open Visual Studio Code
-2. Go to the Extensions view (Ctrl+Shift+X or Cmd+Shift+X)
-3. Search for "JSON Dynamic Widget Helper"
-4. Click Install
 
 ## Usage
 

@@ -1,5 +1,9 @@
 # Change Log
 
+# v0.0.5
+- Bug: Remove widget action should be available for widgets with one or no children #10
+- Bug: Code actions appear for all selections #9 
+
 # v0.0.4
 - Updated extension logo
 

@@ -40,7 +40,6 @@ function parseJsonObject(document: vscode.TextDocument, start: vscode.Position, 
     const parsedObject = JSON.parse(jsonText);
     return { object: parsedObject, start, end };
   } catch (e) {
-    showErrorMessage('Error: Invalid JSON object.');
     return null;
   }
 }

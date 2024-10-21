@@ -18,13 +18,12 @@ export function findJsonObjectAtSelection(document: vscode.TextDocument, selecti
 }
 
 export function isValidSelection(document: vscode.TextDocument, selection: vscode.Selection): boolean {
-  const selectedText = document.getText(new vscode.Range(selection.start, selection.end)).trim();
-  if (selectedText !== 'type') {
+  const lineText = document.lineAt(selection.start.line).text.trim();
+  if (!lineText.startsWith('"type"')) {
     return false;
   }
 
-  const lineText = document.lineAt(selection.start.line).text;
-  const colonIndex = lineText.indexOf(':', selection.start.character);
+  const colonIndex = lineText.indexOf(':');
   if (colonIndex === -1) {
     showErrorMessage('Error: Could not find the value for "type".');
     return false;

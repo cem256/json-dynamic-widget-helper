@@ -10,9 +10,10 @@ export class JsonWidgetCodeActionProvider implements vscode.CodeActionProvider {
   ];
 
   public provideCodeActions(document: vscode.TextDocument, range: vscode.Range | vscode.Selection): vscode.CodeAction[] {
-    const selection = new vscode.Selection(range.start, range.end);
+    const line = document.lineAt(range.start.line);
+    const lineRange = line.range;
 
-    if (!isValidSelection(document, selection)) {
+    if (!isValidSelection(document, new vscode.Selection(lineRange.start, lineRange.end))) {
       return [];
     }
 
@@ -25,7 +26,7 @@ export class JsonWidgetCodeActionProvider implements vscode.CodeActionProvider {
     actions.push(...this.createWrapActions());
 
     // Add remove action only if the widget has exactly one child or no child
-    const jsonObject = findJsonObjectAtSelection(document, selection);
+    const jsonObject = findJsonObjectAtSelection(document, new vscode.Selection(lineRange.start, lineRange.end));
     if (jsonObject && hasOneOrNoChild(jsonObject.object)) {
       actions.push(this.createRemoveAction());
     }

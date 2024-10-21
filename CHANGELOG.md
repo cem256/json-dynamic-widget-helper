@@ -1,5 +1,8 @@
 # Change Log
 
+# v0.0.7
+- Update README.md
+
 # v0.0.6
 - show code actions when the line contains the word `"type"` instead of selecting the key `type` specifically #12
 - update usage.gif

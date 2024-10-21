@@ -1,5 +1,9 @@
 # Change Log
 
+# v0.0.6
+- show code actions when the line contains the word `"type"` instead of selecting the key `type` specifically #12
+- update usage.gif
+
 # v0.0.5
 - Bug: Remove widget action should be available for widgets with one or no children #10
 - Bug: Code actions appear for all selections #9 
